@@ -18,12 +18,13 @@ class BaseModel:
                 if k == "created_at" or k == "updated_at":
                     self.__dict__[k] = datetime.strptime(
                         v, "%Y-%m-%dT%H:%M:%S.%f"
-                        )
+                    )
                 elif k == "__class__":
                     continue
                 else:
                     self.__dict__[k] = v
         else:
+            # create id and created_at as done previously
             models.storage.new(self)
 
     def __str__(self):
