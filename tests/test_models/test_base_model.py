@@ -172,7 +172,7 @@ class TestBaseModel_to_dict(unittest.TestCase):
         }
         self.assertDictEqual(bm.to_dict(), tdict)
 
-    def test_contrast_to_dict_and_dict(self):
+    def test_contrast_to_dict_dunder_dict(self):
         bm = BaseModel()
         self.assertNotEqual(bm.to_dict, bm.__dict__)
 
