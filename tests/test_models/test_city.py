@@ -105,7 +105,7 @@ class TestCity_save(unittest.TestCase):
             pass
 
     def test_one_save(self):
-        cy = City
+        cy = City()
         sleep(0.05)
         first_updated_at = cy.updated_at
         cy.save()
