@@ -75,13 +75,13 @@ class TestPlace_Instantiation(unittest.TestCase):
         self.assertNotIn("price_by_night", pl.__dict__)
 
     def test_latitude_is_public_class_attribute(self):
-        pl = Place
+        pl = Place()
         self.assertEqual(float, type(Place.latitude))
         self.assertIn("latitude", dir(pl))
         self.assertNotIn("latitude", pl.__dict__)
 
     def test_longitude_is_public_class_attribute(self):
-        pl = Place
+        pl = Place()
         self.assertEqual(float, type(Place.longitude))
         self.assertIn("longitude", dir(pl))
         self.assertNotIn("longitude", pl.__dict__)
@@ -89,7 +89,7 @@ class TestPlace_Instantiation(unittest.TestCase):
     def test_amenity_ids_is_public_clace_attribute(self):
         pl = Place()
         self.assertEqual(list, type(Place.amenity_ids))
-        self.assertIn("amenity_id", dir(pl))
+        self.assertIn("amenity_ids", dir(pl))
         self.assertNotIn("amenity_ids", pl.__dict__)
 
     def test_two_places_unique_ids(self):
@@ -101,13 +101,13 @@ class TestPlace_Instantiation(unittest.TestCase):
         pl1 = Place()
         sleep(0.05)
         pl2 = Place()
-        self.asserLess(pl1.created_at, pl2.created_at)
+        self.assertLess(pl1.created_at, pl2.created_at)
 
     def test_two_places_different_updated_at(self):
         pl1 = Place()
         sleep(0.05)
         pl2 = Place()
-        self.asserLess(pl1.updated_at, pl2.updated_at)
+        self.assertLess(pl1.updated_at, pl2.updated_at)
 
     def test_str_representation(self):
         dt = datetime.today()
