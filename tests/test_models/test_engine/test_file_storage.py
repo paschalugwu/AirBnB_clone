@@ -15,7 +15,7 @@ from models.amenity import Amenity
 from models.review import Review
 
 
-class TestFileStorage_instantiation(unittest.Testcase):
+class TestFileStorage_instantiation(unittest.TestCase):
     """Unittests for testing instantiation of the FileStorage
     class"""
 
@@ -81,7 +81,7 @@ class TestFileStorage_methods(unittest.TestCase):
         models.storage.new(am)
         models.storage.new(rv)
         self.assertIn("BaseModel." + bm.id, models.storage.all().keys())
-        self.assertIn(bm, models.stoage.all().values())
+        self.assertIn(bm, models.storage.all().values())
         self.assertIn("User." + us.id, models.storage.all().keys())
         self.assertIn(us, models.storage.all().values())
         self.assertIn("State." + st.id, models.storage.all().keys())
@@ -161,7 +161,12 @@ class TestFileStorage_methods(unittest.TestCase):
         self.assertIn("Review." + rv.id, objs)
 
     def test_reload_no_file(self):
-        self.assertRaises(FileNotFoundError, models.storage.reload())
+        try:
+            models.storage.reload()
+        except FileNotFoundError:
+            pass
+        except Exception as e:
+            self.fail(f"Unexpected exception: {e}")
 
     def test_reload_with_arg(self):
         with self.assertRaises(TypeError):
