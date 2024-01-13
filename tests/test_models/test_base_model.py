@@ -15,7 +15,7 @@ class TestBaseModel_instantiation(unittest.TestCase):
         self.assertEqual(BaseModel, type(BaseModel()))
 
     def test_new_instance_stored_in_objects(self):
-        self.assertIN(BaseModel(), models.storage.all().values())
+        self.assertIn(BaseModel(), models.storage.all().values())
 
     def test_id_is_public_str(self):
         self.assertEqual(str, type(BaseModel().id))
@@ -49,7 +49,7 @@ class TestBaseModel_instantiation(unittest.TestCase):
         bm = BaseModel()
         bm.id = "123456"
         bm.created_at = bm.updated_at = dt
-        bmstr = bm.__str__
+        bmstr = bm.__str__()
         self.assertIn("[BaseModel] (123456)", bmstr)
         self.assertIn("'id': '123456'", bmstr)
         self.assertIn("'created_at': " + dt_repr, bmstr)
@@ -129,7 +129,7 @@ class TestBaseModel_save(unittest.TestCase):
         bm.save()
         bmid = "BaseModel." + bm.id
         with open("file.json", "r") as f:
-            self.assertIn(bmid, f.reead())
+            self.assertIn(bmid, f.read())
 
 
 class TestBaseModel_to_dict(unittest.TestCase):
