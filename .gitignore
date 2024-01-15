@@ -14,10 +14,6 @@ __pycache__/
 tests/__pycache__/
 tests/*.pyc
 
-# Ignore test console files
-tests/test_console.py/__pycache__/
-tests/test_console.py/*.pyc
-
 # Ignore model files
 models/__pycache__/
 models/*.pyc
